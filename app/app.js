@@ -6,6 +6,7 @@
         "ui.mask",
         "ui.bootstrap",
         "ngAnimate",
+        "angularCharts",
         "ngMessages",
         "toastr",
         "productResourceMock"
@@ -63,6 +64,19 @@
                         product: function(productResource, $stateParams) {
                             var productId = $stateParams.productId;
                             return productResource.get({ productId: productId }).$promise;
+                        }
+                    }
+                })
+                .state("priceAnalytics", {
+                    url: "/priceAnalytics",
+                    templateUrl: "app/prices/priceAnalyticsView.html",
+                    controller: "PriceAnalyticsCtrl",
+                    resolve: {
+                        productResource: "productResource",
+
+                        products: function(productResource) {
+                            //use query to get products in an array, get to get in object.
+                            return productResource.query().$promise;
                         }
                     }
                 })
