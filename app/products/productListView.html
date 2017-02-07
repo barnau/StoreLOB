@@ -1,6 +1,15 @@
 <div class="panel panel-primary">
     <div class="panel-heading" style="font-size:large">
         Product List
+        <div class="btn-group pull-right col-md-4" data-toggle="buttons">
+            <label class="control-label" for="gardenRadio">Garden</label>
+            <input type="radio" name="gardenRadio" ng-model="vm.productCategory" value="GDN" ng-change="vm.changeCategory()" />
+
+            <label class="control-label" for="toolRadio">General Tools</label>
+            <input type="radio" name="toolRadio" ng-model="vm.productCategory" value="TBX" ng-change="vm.changeCategory()" />
+
+
+        </div>
     </div>
     <div class="panel-body">
         <table class="table">

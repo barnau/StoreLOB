@@ -8,8 +8,8 @@
         "ngAnimate",
         "angularCharts",
         "ngMessages",
-        "toastr",
-        "productResourceMock"
+        "toastr"
+        // "productResourceMock"
     ]);
 
     app.config(["$stateProvider",
@@ -38,7 +38,7 @@
 
                         product: function(productResource, $stateParams) {
                             var productId = $stateParams.productId;
-                            return productResource.get({ productId: productId }).$promise;
+                            return productResource.get({ id: productId }).$promise;
                         }
                     }
                 })

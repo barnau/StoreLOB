@@ -34,9 +34,18 @@
         vm.submitInfo = function(form) {
             console.log(form.inputProductName);
             if (form.inputProductName.$valid && form.inputProductCode.$valid) {
-                vm.product.$save(function(data) {
-                    toastr.success("Save Successful");
-                });
+                if (vm.product.productId) {
+                    console.log('hit update;' + vm.product.productId);
+                    vm.product.$update({ id: vm.product.productId }, function(data) {
+
+                        toastr.success("Save successfull!");
+                    });
+                } else {
+                    vm.product.$save(function(data) {
+                        toastr.success("Save Successful");
+                    });
+                }
+
             } else {
                 alert("Please correct the validation errors first.")
             }
