@@ -49,19 +49,36 @@
             } else {
                 alert("Please correct the validation errors first.")
             }
+
+
         }
 
         vm.submitTag = function() {
-            vm.product.$save(function(data) {
-                toastr.success("Save Successful");
-            });
+            if (vm.product.productId) {
+                vm.product.$update({ id: vm.product.productId }, function(data) {
+                    toastr.success("Save successfull!");
+                });
+            } else {
+                vm.product.$save(function(data) {
+                    toastr.success("Save Successful");
+                });
+            }
+
+
+
         }
 
         vm.submitPrice = function(isValid) {
             if (isValid) {
-                vm.product.$save(function(data) {
-                    toastr.success("Save successfull!");
-                })
+                if (vm.product.productId) {
+                    vm.product.$update({ id: vm.product.productId }, function(data) {
+                        toastr.success("Save successfull!");
+                    });
+                } else {
+                    vm.product.$save(function(data) {
+                        toastr.success("Save Successful");
+                    });
+                }
             }
         }
 
